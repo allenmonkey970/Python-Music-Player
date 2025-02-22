@@ -39,6 +39,31 @@ async def update_downloads_playlist(playlists):
     playlists["all"] = sum(playlists.values(), [])
     print("Updated downloads playlist:", [os.path.basename(file) for file in playlists["downloads"]])
 
+# Function to choose a playlist or download music
+async def initial_choice(playlists):
+    while True:
+        user_choice = input("Do you want to choose a playlist or download music? (playlist/download): ").strip().lower()
+        if user_choice == "playlist":
+            return choice(playlists)
+        elif user_choice == "download":
+            use = input("Download from URL (Y or N): ").strip().lower()
+            if use in ["y", "yes"]:
+                url = input("Enter the URL of the video (n to break): ")
+                if url.lower() not in ["n", "no"]:
+                    try:
+                        await url_download(url)
+                    except Exception as e:
+                        print(f"Error downloading from URL: {e}")
+            else:
+                try:
+                    await search_and_download()
+                except Exception as e:
+                    print(f"Error searching and downloading: {e}")
+            await update_downloads_playlist(playlists)
+            return playlists["downloads"]
+        else:
+            print("Invalid choice. Please choose 'playlist' or 'download'.")
+
 # Function to choose a playlist
 def choice(playlists):
     while True:
@@ -134,7 +159,7 @@ async def music_play(playlist, playlists):
 # Main function to start the music player
 async def main():
     playlists = await get_playlists(directories)
-    playlist = choice(playlists)
+    playlist = await initial_choice(playlists)
     await music_play(playlist, playlists)
 
 if __name__ == "__main__":
