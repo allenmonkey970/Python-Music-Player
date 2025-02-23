@@ -1,4 +1,5 @@
 # Python-Music-Player
+
 ## Prerequisites
 
 1. **FFmpeg Installation:**
@@ -32,6 +33,11 @@ pip install yt_dlp
 pip install pygame
 pip install asyncio
 ```
+
+3. **Cookies Export:**
+   - Install the [Get cookies.txt](https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc) extension.
+   - Go to YouTube and export the cookies.
+   - Save the exported cookies to a file named `cookies.txt`.
 
 ## Usage
 
