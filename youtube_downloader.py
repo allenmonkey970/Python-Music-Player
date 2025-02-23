@@ -13,6 +13,7 @@ YDL_OPTS = {
         'preferredquality': '192',  # Set audio quality to 192 kbps
     }],
     'n_threads': 8,  # Number of threads to use for downloading
+    'cookiefile': 'cookies.txt'  # Path to cookies file
 }
 
 # Asynchronous function to download audio from a given URL
