@@ -2,6 +2,7 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.6+-green.svg)
 ![Last Updated](https://img.shields.io/badge/last%20updated-2025--05--01-brightgreen)
+
 ## Prerequisites
 
 1. **FFmpeg Installation:**
